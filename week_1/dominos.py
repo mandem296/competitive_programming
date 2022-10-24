@@ -1,20 +1,18 @@
-class Solution:
-    def fizzBuzz(self, n: int) -> List[str]:
+def board_dominos(M, N):
+    if (M <= N and N <= 16):
+        total_squares = M * N
 
-        # initializing
-        output = []
-        dict = {3: "Fizz", 5: "Buzz"}
-        divisors = [3, 5]
+        dominos = 2 * 1
 
-        for number in range(1, n + 1):
-            result = []
-            for div in divisors:
-                if number % div == 0:
-                    # where the result is divisible by either 3 or 5 we replace the no. in
-                    # the array with what is defined in the dictionary {dict}
+        total_dominos_fitting = (total_squares / dominos)
 
-                    result.append(dict[div])
-            if not result:
-                result.append(str(number))
-            output.append(''.join(result))
-        return output
+        if (total_squares % dominos == 0):
+            return total_dominos_fitting
+        else:
+            return (total_dominos_fitting - 0.5)
+
+    else:
+        print("the number is not accepted")
+
+
+M, N = map(int, input().split())
